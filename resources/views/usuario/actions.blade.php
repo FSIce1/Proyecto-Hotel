@@ -6,7 +6,15 @@
 </td>
 
 <td>
-    <a href="#" onclick="Eliminar({{$id}},'{{$name}}')" class="btn btn-danger btn-icon rounded-circle">
+    <a href="#" onclick="Eliminar({{$id}},'{{$nombre_usuario}}')" class="btn btn-danger btn-icon rounded-circle">
         <i class="fal fa-times"></i>
     </a>
 </td>
+
+<!--
+<td>
+    <a href="#" onclick="Modulo({{$id}},'{{$estado_usuario}}')" class="btn btn-warning btn-icon rounded-circle">
+        <i class="fal fa-exclamation-triangle"></i>
+    </a>
+</td>
+-->

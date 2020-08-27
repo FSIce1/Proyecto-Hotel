@@ -23,9 +23,37 @@ Route::get('/', function () {
 
 Route::group(['middleware' => ['web']], function () {
 
+
+    //? ===========INICIAL============
+
     // TODO: USUARIOS
+    
+    route::put('usuario/cambiar/{id}','Usuario\UsuarioController@cambiarEstado')->name('usuario.cambiar');
     
     route::get('usuario/listar','Usuario\UsuarioController@listarUsuarios')->name('usuario.listar');
     route::resource('usuario', 'Usuario\UsuarioController');
-          
+    
+
+    //? ===========USUARIOS============
+
+    // TODO: CLIENTES
+    
+    route::get('cliente/listar','Cliente\ClienteController@listarClientes')->name('cliente.listar');
+    route::resource('cliente', 'Cliente\ClienteController');
+    
+
+    //? ===========OPCIONES============
+
+    // TODO: PISOS
+        
+    route::get('piso/listar','Piso\PisoController@listarPisos')->name('piso.listar');
+    route::resource('piso', 'Piso\PisoController');
+
+    // TODO: TIPOS
+        
+    route::get('tipo/listar','Tipo\TipoController@listarTipos')->name('tipo.listar');
+    route::resource('tipo', 'Tipo\TipoController');
+
+
+
 });

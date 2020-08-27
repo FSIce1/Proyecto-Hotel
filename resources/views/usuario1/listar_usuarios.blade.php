@@ -33,48 +33,48 @@
                     
                     <div class="form-group">
                         
-                        {!! Form::label('nombre_usuario', 'Usuario', ['class'=>'form-label']) !!}
+                        {!! Form::label('name', 'Usuario', ['class'=>'form-label']) !!}
 
-                        {!! Form::text('nombre_usuario', null, ['id' => 'nombre_usuario', 'class' => 'form-control id-nombre_usuario',
+                        {!! Form::text('name', null, ['id' => 'name', 'class' => 'form-control id-nombre',
                         'placeholder' => 'Ingrese Usuario...']) !!}
     
-                        <div id='mensaje-error-nombre_usuario' class="invalid-feedback">
+                        <div id='mensaje-error-nombre' class="invalid-feedback">
                         </div>
 
                     </div>
 
                     <div class="form-group">
                         
-                        {!! Form::label('email_usuario', 'Email', ['class'=>'form-label']) !!}
+                        {!! Form::label('email', 'Email', ['class'=>'form-label']) !!}
 
-                        {!! Form::email('email_usuario', null, ['id' => 'email_usuario', 'class' => 'form-control id-email_usuario',
+                        {!! Form::email('email', null, ['id' => 'email', 'class' => 'form-control id-email',
                         'placeholder' => 'Ingrese Email...']) !!}
     
-                        <div id='mensaje-error-email_usuario' class="invalid-feedback">
+                        <div id='mensaje-error-email' class="invalid-feedback">
                         </div>
 
                     </div>
 
                     <div class="form-group">
                         
-                        {!! Form::label('contraseña_usuario', 'Contraseña', ['id' => 'label-contraseña_usuario','class'=>'form-label']) !!}
+                        {!! Form::label('password', 'Contraseña', ['id' => 'label-password','class'=>'form-label']) !!}
 
-                        {!! Form::text('contraseña_usuario', null, ['id' => 'contraseña_usuario', 'class' => 'form-control id-contraseña_usuario',
+                        {!! Form::text('password', null, ['id' => 'password', 'class' => 'form-control id-contraseña',
                         'placeholder' => 'Ingrese Contraseña...']) !!}
     
-                        <div id='mensaje-error-contraseña_usuario' class="invalid-feedback">
+                        <div id='mensaje-error-contraseña' class="invalid-feedback">
                         </div>
 
                     </div>
 
                     <div class="form-group">
                         
-                        {!! Form::label('contraseña_usuario_confirmation', 'Verifica Contraseña', ['id' => 'label-contraseña_usuario-confirmation','class'=>'form-label']) !!}
+                        {!! Form::label('password_confirmation', 'Verifica Contraseña', ['id' => 'label-password-confirmation','class'=>'form-label']) !!}
 
-                        {!! Form::text('contraseña_usuario_confirmation', null, ['id' => 'contraseña_usuario_confirmation', 'class' => 'form-control id-contraseña_usuario-2',
+                        {!! Form::text('password_confirmation', null, ['id' => 'password_confirmation', 'class' => 'form-control id-contraseña-2',
                         'placeholder' => 'Confirme Contraseña...']) !!}
     
-                        <div id='mensaje-error-contraseña_usuario-2' class="invalid-feedback">
+                        <div id='mensaje-error-contraseña-2' class="invalid-feedback">
                         </div>
 
                     </div>
@@ -117,7 +117,6 @@
                     <th WIDTH="20">Id</th>
                     <th WIDTH="50">Usuario</th>
                     <th WIDTH="100">Email</th>
-                    <th WIDTH="100">Estado</th>
                     <th WIDTH="30">Opciones</th>
                 </tr>
             </thead>
@@ -128,7 +127,6 @@
                     <th WIDTH="20">Id</th>
                     <th WIDTH="50">Usuario</th>
                     <th WIDTH="100">Email</th>
-                    <th WIDTH="100">Estado</th>
                     <th WIDTH="30">Opciones</th>
                 </tr>
 
@@ -180,11 +178,11 @@
             "ajax": "{{ route('usuario.listar') }}",
             "columns": [
                 {data: 'id'},
-                {data: 'nombre_usuario'},
-                {data: 'email_usuario'},
-                {data: 'estado_usuario'},
+                {data: 'name'},
+                {data: 'email'},
                 {data: 'action', "orderable": false, searchable: false},
             ],
+
 
             responsive: true,
             lengthChange: false,
@@ -304,40 +302,41 @@
 
                         } else {
 
-                            if(data.responseJSON.errors.nombre_usuario == null){
-                                $('.id-nombre_usuario').removeClass('is-invalid');
-                                $("#mensaje-error-nombre_usuario").html('');
+                            if(data.responseJSON.errors.name == null){
+                                $('.id-nombre').removeClass('is-invalid');
+                                $("#mensaje-error-nombre").html('');
                             } else {
-                                $('.id-nombre_usuario').addClass('is-invalid');
-                                $("#mensaje-error-nombre_usuario").html(data.responseJSON.errors.nombre_usuario);
+                                $('.id-nombre').addClass('is-invalid');
+                                $("#mensaje-error-nombre").html(data.responseJSON.errors.name);
                             }
                             
                             
-                            if(data.responseJSON.errors.email_usuario == null){
-                                $('.id-email_usuario').removeClass('is-invalid');
-                                $("#mensaje-error-email_usuario").html('');    
+                            if(data.responseJSON.errors.email == null){
+                                $('.id-email').removeClass('is-invalid');
+                                $("#mensaje-error-email").html('');    
                             } else {
-                                $('.id-email_usuario').addClass('is-invalid');
-                                $("#mensaje-error-email_usuario").html(data.responseJSON.errors.email_usuario);
+                                $('.id-email').addClass('is-invalid');
+                                $("#mensaje-error-email").html(data.responseJSON.errors.email);
                             }
                             
-                            if(data.responseJSON.errors.contraseña_usuario == null){
-                                $('.id-contraseña_usuario').removeClass('is-invalid');
-                                $("#mensaje-error-contraseña_usuario").html('');    
+                            if(data.responseJSON.errors.password == null){
+                                $('.id-contraseña').removeClass('is-invalid');
+                                $("#mensaje-error-contraseña").html('');    
                             } else {
-                                $('.id-contraseña_usuario').addClass('is-invalid');
-                                $("#mensaje-error-contraseña_usuario").html(data.responseJSON.errors.contraseña_usuario);
+                                $('.id-contraseña').addClass('is-invalid');
+                                $("#mensaje-error-contraseña").html(data.responseJSON.errors.password);
                             }
 
-                            if(data.responseJSON.errors.contraseña_usuario_confirmation == null){
-                                $('.id-contraseña_usuario-2').removeClass('is-invalid');
-                                $("#mensaje-error-contraseña_usuario-2").html('');    
+                            if(data.responseJSON.errors.password_confirmation == null){
+                                $('.id-contraseña-2').removeClass('is-invalid');
+                                $("#mensaje-error-contraseña-2").html('');    
                             } else {
-                                $('.id-contraseña_usuario-2').addClass('is-invalid');
-                                $("#mensaje-error-contraseña_usuario-2").html(data.responseJSON.errors.contraseña_usuario_confirmation);
+                                $('.id-contraseña-2').addClass('is-invalid');
+                                $("#mensaje-error-contraseña-2").html(data.responseJSON.errors.password_confirmation);
                             }
 
                         }
+
                         
                         console.log(data.responseJSON.errors);
                         $("#campo-alertas").fadeIn();
@@ -359,15 +358,15 @@
             } else {
                 // DATOS
                 var id = $("#id").val();
-                var nombre = $("#nombre_usuario").val();
-                var email = $("#email_usuario").val();
+                var nombre = $("#name").val();
+                var email = $("#email").val();
                 
                 // TOKEN
                 var token = $("input[name=_token]").val();
 
                 var ruta = "{{url('usuario')}}/"+id+"";
 
-                var datos = "id="+id+"&nombre_usuario="+nombre+"&email_usuario="+email;
+                var datos = "id="+id+"&name="+nombre+"&email="+email;
                 //alert(datos);
                 
                 //var datos = $('#form').serialize();
@@ -410,20 +409,21 @@
 
                         } else {
 
-                            if(data.responseJSON.errors.nombre_usuario == null){
-                                $('.id-nombre_usuario').removeClass('is-invalid');
-                                $("#mensaje-error-nombre_usuario").html('');
+                            if(data.responseJSON.errors.name == null){
+                                $('.id-nombre').removeClass('is-invalid');
+                                $("#mensaje-error-nombre").html('');
                             } else {
-                                $('.id-nombre_usuario').addClass('is-invalid');
-                                $("#mensaje-error-nombre_usuario").html(data.responseJSON.errors.nombre_usuario);
+                                $('.id-nombre').addClass('is-invalid');
+                                $("#mensaje-error-nombre").html(data.responseJSON.errors.name);
                             }
                             
-                            if(data.responseJSON.errors.email_usuario == null){
-                                $('.id-email_usuario').removeClass('is-invalid');
-                                $("#mensaje-error-email_usuario").html('');    
+                            
+                            if(data.responseJSON.errors.email == null){
+                                $('.id-email').removeClass('is-invalid');
+                                $("#mensaje-error-email").html('');    
                             } else {
-                                $('.id-email_usuario').addClass('is-invalid');
-                                $("#mensaje-error-email_usuario").html(data.responseJSON.errors.email_usuario);
+                                $('.id-email').addClass('is-invalid');
+                                $("#mensaje-error-email").html(data.responseJSON.errors.email);
                             }
                             
                         }
@@ -439,7 +439,6 @@
         });
 
     });
-
 
     // ELIMINAR
     var Eliminar = function(id,nom){
@@ -520,99 +519,6 @@
 
     }
 
-    // ACTIVAR / DESACTIVAR
-    var Modulo = function(id,nom){
-
-        var variable;
-
-        if(nom=="Activo"){
-            variable = "0";
-        } else {
-            variable = "1";
-        }
-        
-        var swalWithBootstrapButtons = Swal.mixin(
-        {
-            customClass:
-            {
-                confirmButton: "btn btn-primary",
-                cancelButton: "btn btn-danger mr-2"
-            },
-            buttonsStyling: false
-        });
-
-        swalWithBootstrapButtons
-        .fire(
-        {
-            title: "¿Desea cambiar estado del usuario ' "+ variable + "'?",
-            //text: "You won't be able to revert this!",
-            type: "warning",
-            showCancelButton: true,
-            confirmButtonText: "Sí, deseo cambiar!",
-            cancelButtonText: "No, cancelar!",
-            reverseButtons: true
-        })
-        .then(function(result)
-        {
-            if (result.value){
-                                
-                // TOKEN
-                var token = $("input[name=_token]").val();
-
-                var ruta = "{{url('usuario.cambiar')}}/"+id+"";
-
-                $.ajax({
-                    url: ruta,
-                    headers: {'X-CSRF-TOKEN': token},
-                    type: 'PUT',
-                    datatype: 'json',
-                    success: function(data){
-                        if(data.success == 'true'){
-                            // Recarga lista
-                            setTimeout(function(){$('#dt-basic-example').DataTable().ajax.reload(null, false);}, 1000);
-                            
-                            // Cierra Modal
-                            $('#default-example-modal').modal('hide');
-                            
-                            // Muestra alerta
-
-                            swalWithBootstrapButtons.fire(
-                                "¡Eliminado!",
-                                "",
-                                "success"
-                            );
-                        } else {
-                            swalWithBootstrapButtons.fire(
-                                "Cancelado",
-                                "",
-                                "error"
-                            );
-                        }
-                    },
-                    error: function(data){
-                        swalWithBootstrapButtons.fire(
-                            "No pudo ser cambiado",
-                            "",
-                            "error"
-                        );
-                    }
-                });
-
-            }else if (
-                // Read more about handling dismissals
-                result.dismiss === Swal.DismissReason.cancel
-            )
-            {
-                swalWithBootstrapButtons.fire(
-                    "Cancelado",
-                    "",
-                    "error"
-                );
-            }
-        });
-
-    }
-
     // MANDAR DATOS
     var Mostrar = function(id){
 
@@ -631,11 +537,11 @@
             $("#Modificar").hide();
 
             // Muestro
-            $("#contraseña_usuario").show(); 
-            $("#contraseña_usuario_confirmation").show(); 
-            $("#label-contraseña_usuario").show(); 
-            $("#label-contraseña_usuario-confirmation").show(); 
-            
+            $("#password").show(); 
+            $("#password_confirmation").show(); 
+            $("#label-password").show(); 
+            $("#label-password-confirmation").show(); 
+
         } else {
             
             document.getElementById("tituloModal").innerHTML = "Modificar Usuario";
@@ -643,18 +549,20 @@
             $("#Guardar").hide(); 
             $("#Modificar").show();
             
-            // OCULTO MI CAMPOS DE CONTRASEÑAS 
-            $("#contraseña_usuario").hide(); 
-            $("#contraseña_usuario_confirmation").hide(); 
-            $("#label-contraseña_usuario").hide(); 
-            $("#label-contraseña_usuario-confirmation").hide(); 
+            // OCULTO MI CAMPOS DE CONTRASEÑAS :v
+            $("#password").hide(); 
+            $("#password_confirmation").hide(); 
+            $("#label-password").hide(); 
+            $("#label-password-confirmation").hide(); 
+
+            
 
             var route = "{{url('usuario')}}/"+id+"/edit";
 
             $.get(route, function(data){
                 $("#id").val(data.id);
-                $("#nombre_usuario").val(data.nombre_usuario);
-                $("#email_usuario").val(data.email_usuario);
+                $("#name").val(data.name);
+                $("#email").val(data.email);
             });
 
         }
@@ -676,17 +584,17 @@
 
     // LIMPIO LAS VALIDACIONES
     var limpiarValidaciones = function(){
-        $('.id-nombre_usuario').removeClass('is-invalid');
-        $("#mensaje-error-nombre_usuario").html('');
+        $('.id-nombre').removeClass('is-invalid');
+        $("#mensaje-error-descripcion").html('');
         
-        $('.id-email_usuario').removeClass('is-invalid');
-        $("#mensaje-error-email_usuario").html(''); 
+        $('.id-email').removeClass('is-invalid');
+        $("#mensaje-error-email").html(''); 
 
-        $('.id-contraseña_usuario').removeClass('is-invalid');
-        $("#mensaje-error-contraseña_usuario").html(''); 
+        $('.id-contraseña').removeClass('is-invalid');
+        $("#mensaje-error-contraseña").html(''); 
 
-        $('.id-contraseña_usuario-2').removeClass('is-invalid');
-        $("#mensaje-error-contraseña_usuario-2").html(''); 
+        $('.id-contraseña-2').removeClass('is-invalid');
+        $("#mensaje-error-contraseña-2").html(''); 
     }
 
     </script>

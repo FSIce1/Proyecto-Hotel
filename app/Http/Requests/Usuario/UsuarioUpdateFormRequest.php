@@ -23,16 +23,15 @@ class UsuarioUpdateFormRequest extends FormRequest{
 
     public function rules(){
         return [
-            'name' => 'required|min:4|max:70|unique:users,name,'.$this->id,
+            
+            'nombre_usuario' => 'required|min:4|max:70|unique:tb_usuario,nombre_usuario,'.$this->id,
+            'email_usuario' => 'bail|required|min:9|max:70|email|unique:tb_usuario,email_usuario,'.$this->id, //! bail -> anula las demás reglas 
+            
+
             /*
-            'name' => [
-                'required',
-                'min:4',
-                'max:70',
-                Rule::unique('users')->ignore($this->route->parameter('usuario'))
-            ],
+            'nombre_usuario' => 'required|min:4|max:70|unique:tb_usuario,nombre_usuario',
+            'email_usuario' => 'bail|required|min:9|max:70|email|unique:tb_usuario,email_usuario', //! bail -> anula las demás reglas 
             */
-            'email' => 'bail|required|min:9|max:70|email|unique:users,email,'.$this->id, //! bail -> anula las demás reglas 
         ];
     }
 
@@ -40,17 +39,17 @@ class UsuarioUpdateFormRequest extends FormRequest{
         
         return [
             //? PARA NOMBRE 
-            'name.required' => 'El nombre de usuario es obligatorio.',
-            'name.min' => 'El nombre del usuario debe tener al menos 4 caracteres.',
-            'name.max' => 'El nombre del usuario no puede tener más de 70 caracteres.',
-            'name.unique' => 'Ya existe un usuario con este nombre, ingrese otro', 
+            'nombre_usuario.required' => 'El nombre de usuario es obligatorio.',
+            'nombre_usuario.min' => 'El nombre del usuario debe tener al menos 4 caracteres.',
+            'nombre_usuario.max' => 'El nombre del usuario no puede tener más de 70 caracteres.',
+            'nombre_usuario.unique' => 'Ya existe un usuario con este nombre, ingrese otro', 
             
             //? PARA EMAIL
-            'email.required' => 'El email es obligatorio.',
-            'email.email' => 'Formato incorrecto para el email.',
-            'email.min' => 'El email debe tener al menos 9 caracteres.',
-            'email.max' => 'El email no debe tener más de 70 caracteres.',
-            'email.unique' => 'El email ya existe, ingrese otro', 
+            'email_usuario.required' => 'El email es obligatorio.',
+            'email_usuario.email' => 'Formato incorrecto para el email.',
+            'email_usuario.min' => 'El email debe tener al menos 9 caracteres.',
+            'email_usuario.max' => 'El email no debe tener más de 70 caracteres.',
+            'email_usuario.unique' => 'El email ya existe, ingrese otro', 
     
         ];
 

@@ -3,9 +3,9 @@
 
 @section('modo', 'Listado')
 
-@section('titulo', 'Usuario')
+@section('titulo', 'Cliente')
 
-@section('titulo-ref', 'Lista de Usuarios')
+@section('titulo-ref', 'Lista de Clientes')
 
 @section('texto','busca, elimina, modifica, exporta en las siguiente lista')
 
@@ -19,7 +19,7 @@
 
                 <div class="modal-header">
                     <h4 id="tituloModal" name="tituloModal" class="modal-title">
-                        Agregar Documento
+                        Agregar CLiente
                     </h4>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true"><i class="fal fa-times"></i></span>
@@ -33,54 +33,78 @@
                     
                     <div class="form-group">
                         
-                        {!! Form::label('nombre_usuario', 'Usuario', ['class'=>'form-label']) !!}
+                        {!! Form::label('nombre_cliente', 'Nombre', ['class'=>'form-label']) !!}
 
-                        {!! Form::text('nombre_usuario', null, ['id' => 'nombre_usuario', 'class' => 'form-control id-nombre_usuario',
-                        'placeholder' => 'Ingrese Usuario...']) !!}
+                        {!! Form::text('nombre_cliente', null, ['id' => 'nombre_cliente', 'class' => 'form-control id-nombre_cliente',
+                        'placeholder' => 'Ejemplo: Juan Pedrito']) !!}
     
-                        <div id='mensaje-error-nombre_usuario' class="invalid-feedback">
+                        <div id='mensaje-error-nombre_cliente' class="invalid-feedback">
                         </div>
 
                     </div>
 
                     <div class="form-group">
                         
-                        {!! Form::label('email_usuario', 'Email', ['class'=>'form-label']) !!}
+                        {!! Form::label('apellido_cliente', 'Apellido', ['class'=>'form-label']) !!}
 
-                        {!! Form::email('email_usuario', null, ['id' => 'email_usuario', 'class' => 'form-control id-email_usuario',
-                        'placeholder' => 'Ingrese Email...']) !!}
+                        {!! Form::text('apellido_cliente', null, ['id' => 'apellido_cliente', 'class' => 'form-control id-apellido_cliente',
+                        'placeholder' => 'Ejemplo: Villa Salazar']) !!}
     
-                        <div id='mensaje-error-email_usuario' class="invalid-feedback">
+                        <div id='mensaje-error-apellido_cliente' class="invalid-feedback">
                         </div>
 
                     </div>
 
                     <div class="form-group">
                         
-                        {!! Form::label('contraseña_usuario', 'Contraseña', ['id' => 'label-contraseña_usuario','class'=>'form-label']) !!}
+                        {!! Form::label('tipo_cliente', 'Tipo', ['class'=>'form-label']) !!}
 
-                        {!! Form::text('contraseña_usuario', null, ['id' => 'contraseña_usuario', 'class' => 'form-control id-contraseña_usuario',
-                        'placeholder' => 'Ingrese Contraseña...']) !!}
+                        {!! Form::select('tipo_cliente', ['Dni' => 'Dni', 'Ruc' => 'Ruc','Pasaporte' => 'Pasaporte', 'Carnet Extranjero' => 'Carnet Extranjero'], null, ['placeholder' => 'Seleccionar...', 'class' => 'custom-select id-tipo_cliente'])!!}
+                        
+                        <div id='mensaje-error-tipo_cliente' class="invalid-feedback">
+                        </div>
+                        
+                    </div>
+
+                    <div class="form-group">
+                        
+                        {!! Form::label('n_documento_cliente', 'Documento', ['n_documento_cliente' => 'label-password','class'=>'form-label']) !!}
+
+                        {!! Form::text('n_documento_cliente', null, ['id' => 'n_documento_cliente', 'class' => 'form-control id-n_documento_cliente',
+                        'placeholder' => 'Ejemplo: 72453123']) !!}
     
-                        <div id='mensaje-error-contraseña_usuario' class="invalid-feedback">
+                        <div id='mensaje-error-n_documento_cliente' class="invalid-feedback">
                         </div>
 
                     </div>
 
                     <div class="form-group">
                         
-                        {!! Form::label('contraseña_usuario_confirmation', 'Verifica Contraseña', ['id' => 'label-contraseña_usuario-confirmation','class'=>'form-label']) !!}
+                        {!! Form::label('n_celular_cliente', 'Celular', ['class'=>'form-label']) !!}
 
-                        {!! Form::text('contraseña_usuario_confirmation', null, ['id' => 'contraseña_usuario_confirmation', 'class' => 'form-control id-contraseña_usuario-2',
-                        'placeholder' => 'Confirme Contraseña...']) !!}
+                        {!! Form::text('n_celular_cliente', null, ['id' => 'n_celular_cliente', 'class' => 'form-control id-n_celular_cliente',
+                        'placeholder' => 'Ejemplo: 979532453']) !!}
     
-                        <div id='mensaje-error-contraseña_usuario-2' class="invalid-feedback">
+                        <div id='mensaje-error-n_celular_cliente' class="invalid-feedback">
                         </div>
 
                     </div>
+
+                    <div class="form-group">
+                        
+                        {!! Form::label('email_cliente', 'Email', ['class'=>'form-label']) !!}
+
+                        {!! Form::text('email_cliente', null, ['id' => 'email_cliente', 'class' => 'form-control id-email_cliente',
+                        'placeholder' => 'Ejemplo: luisfe@gmail.com']) !!}
+    
+                        <div id='mensaje-error-email_cliente' class="invalid-feedback">
+                        </div>
+
+                    </div>
+
+                    {!! Form::text('id_usuario_fk', '1', ['id' => 'id_usuario_fk']) !!}
 
                 </div>
-
 
                 <div class="modal-footer">
                 
@@ -114,22 +138,30 @@
         <table id="dt-basic-example" class="table table-bordered table-hover table-striped w-100">
             <thead class="bg-primary-600">
                 <tr>
-                    <th WIDTH="20">Id</th>
-                    <th WIDTH="50">Usuario</th>
-                    <th WIDTH="100">Email</th>
-                    <th WIDTH="100">Estado</th>
-                    <th WIDTH="30">Opciones</th>
+                    <th>Id</th>
+                    <th>Nombre</th>
+                    <th>Apellido</th>
+                    <th>Tipo</th>
+                    <th>N° Documento</th>
+                    <th>Celular</th>
+                    <th>Email</th>
+                    <th>Id Usuario</th>
+                    <th>Opciones</th>
                 </tr>
             </thead>
             
             <tfoot>
                 
                 <tr>
-                    <th WIDTH="20">Id</th>
-                    <th WIDTH="50">Usuario</th>
-                    <th WIDTH="100">Email</th>
-                    <th WIDTH="100">Estado</th>
-                    <th WIDTH="30">Opciones</th>
+                    <th>Id</th>
+                    <th>Nombre</th>
+                    <th>Apellido</th>
+                    <th>Tipo</th>
+                    <th>N° Documento</th>
+                    <th>Celular</th>
+                    <th>Email</th>
+                    <th>Id Usuario</th>
+                    <th>Opciones</th>
                 </tr>
 
             </tfoot>
@@ -145,7 +177,13 @@
 
 @section('scripts')
 
-<script>
+    <script>
+
+    /*
+        !! Form::select('tipo_cliente', $marcas, null, ['id' => 'tipo_cliente', 'class' =>
+    'form-control id-tipo_cliente']) !!
+
+    */
 
 
     var click= false;
@@ -177,14 +215,19 @@
 
             'processing':true,
             'serverSide': true,
-            "ajax": "{{ route('usuario.listar') }}",
+            "ajax": "{{ route('cliente.listar') }}",
             "columns": [
                 {data: 'id'},
-                {data: 'nombre_usuario'},
-                {data: 'email_usuario'},
-                {data: 'estado_usuario'},
+                {data: 'nombre_cliente'},
+                {data: 'apellido_cliente'},
+                {data: 'tipo_cliente'},
+                {data: 'n_documento_cliente'},
+                {data: 'n_celular_cliente'},
+                {data: 'email_cliente'},
+                {data: 'id_usuario_fk'},
                 {data: 'action', "orderable": false, searchable: false},
             ],
+
 
             responsive: true,
             lengthChange: false,
@@ -248,7 +291,7 @@
                 // TOKEN
                 var token = $("input[name=_token]").val();
 
-                var ruta = "{{ route('usuario.store') }}";
+                var ruta = "{{ route('cliente.store') }}";
 
                 /*
                 // Obtendo formulario
@@ -283,7 +326,7 @@
                             
                             Swal.fire({
                                 type: "success",
-                                title: "Usuario insertado correctamento",
+                                title: "Cliente insertado correctamento",
                                 showConfirmButton: false,
                                 timer: 1500
                             });
@@ -291,7 +334,7 @@
                         } else {
                             Swal.fire({
                                 type: "error",
-                                title: "Usuario no pudo ser insertado",
+                                title: "Cliente no pudo ser insertado",
                                 showConfirmButton: false,
                                 timer: 1500
                             });
@@ -304,41 +347,56 @@
 
                         } else {
 
-                            if(data.responseJSON.errors.nombre_usuario == null){
-                                $('.id-nombre_usuario').removeClass('is-invalid');
-                                $("#mensaje-error-nombre_usuario").html('');
+                            if(data.responseJSON.errors.nombre_cliente == null){
+                                $('.id-nombre_cliente').removeClass('is-invalid');
+                                $("#mensaje-error-nombre_cliente").html('');
                             } else {
-                                $('.id-nombre_usuario').addClass('is-invalid');
-                                $("#mensaje-error-nombre_usuario").html(data.responseJSON.errors.nombre_usuario);
+                                $('.id-nombre_cliente').addClass('is-invalid');
+                                $("#mensaje-error-nombre_cliente").html(data.responseJSON.errors.nombre_cliente);
                             }
                             
-                            
-                            if(data.responseJSON.errors.email_usuario == null){
-                                $('.id-email_usuario').removeClass('is-invalid');
-                                $("#mensaje-error-email_usuario").html('');    
+                            if(data.responseJSON.errors.apellido_cliente == null){
+                                $('.id-apellido_cliente').removeClass('is-invalid');
+                                $("#mensaje-error-email").html('');    
                             } else {
-                                $('.id-email_usuario').addClass('is-invalid');
-                                $("#mensaje-error-email_usuario").html(data.responseJSON.errors.email_usuario);
+                                $('.id-apellido_cliente').addClass('is-invalid');
+                                $("#mensaje-error-apellido_cliente").html(data.responseJSON.errors.apellido_cliente);
                             }
                             
-                            if(data.responseJSON.errors.contraseña_usuario == null){
-                                $('.id-contraseña_usuario').removeClass('is-invalid');
-                                $("#mensaje-error-contraseña_usuario").html('');    
+                            if(data.responseJSON.errors.tipo_cliente == null){
+                                $('.id-tipo_cliente').removeClass('is-invalid');
+                                $("#mensaje-error-tipo_cliente").html('');    
                             } else {
-                                $('.id-contraseña_usuario').addClass('is-invalid');
-                                $("#mensaje-error-contraseña_usuario").html(data.responseJSON.errors.contraseña_usuario);
+                                $('.id-tipo_cliente').addClass('is-invalid');
+                                $("#mensaje-error-tipo_cliente").html(data.responseJSON.errors.tipo_cliente);
                             }
 
-                            if(data.responseJSON.errors.contraseña_usuario_confirmation == null){
-                                $('.id-contraseña_usuario-2').removeClass('is-invalid');
-                                $("#mensaje-error-contraseña_usuario-2").html('');    
+                            if(data.responseJSON.errors.n_documento_cliente == null){
+                                $('.id-n_documento_cliente').removeClass('is-invalid');
+                                $("#mensaje-error-n_documento_cliente").html('');    
                             } else {
-                                $('.id-contraseña_usuario-2').addClass('is-invalid');
-                                $("#mensaje-error-contraseña_usuario-2").html(data.responseJSON.errors.contraseña_usuario_confirmation);
+                                $('.id-n_documento_cliente').addClass('is-invalid');
+                                $("#mensaje-error-n_documento_cliente").html(data.responseJSON.errors.n_documento_cliente);
+                            }
+
+                            if(data.responseJSON.errors.n_celular_cliente == null){
+                                $('.id-n_celular_cliente').removeClass('is-invalid');
+                                $("#mensaje-error-n_celular_cliente").html('');    
+                            } else {
+                                $('.id-n_celular_cliente').addClass('is-invalid');
+                                $("#mensaje-error-n_celular_cliente").html(data.responseJSON.errors.n_celular_cliente);
+                            }
+
+                            if(data.responseJSON.errors.email_cliente == null){
+                                $('.id-email_cliente').removeClass('is-invalid');
+                                $("#mensaje-error-email_cliente").html('');    
+                            } else {
+                                $('.id-email_cliente').addClass('is-invalid');
+                                $("#mensaje-error-email_cliente").html(data.responseJSON.errors.email_cliente);
                             }
 
                         }
-                        
+
                         console.log(data.responseJSON.errors);
                         $("#campo-alertas").fadeIn();
 
@@ -358,20 +416,35 @@
                 //alert("Ya clickeaste mrd");
             } else {
                 // DATOS
+                
                 var id = $("#id").val();
-                var nombre = $("#nombre_usuario").val();
-                var email = $("#email_usuario").val();
+                var nombre = $("#nombre_cliente").val();
+                var apellido = $("#apellido_cliente").val();
+                var tipo = $("#tipo_cliente").val();
+                var documento = $("#n_documento_cliente").val();
+                var celular = $("#n_celular_cliente").val();
+                var email = $("#email_cliente").val();
+                var id_usuario = $("#id_usuario_fk").val();
+                
                 
                 // TOKEN
                 var token = $("input[name=_token]").val();
 
-                var ruta = "{{url('usuario')}}/"+id+"";
+                var ruta = "{{url('cliente')}}/"+id+"";
 
-                var datos = "id="+id+"&nombre_usuario="+nombre+"&email_usuario="+email;
+                /*
+                var datos = "id="+id
+                +"&nombre_cliente="+nombre
+                +"&apellido_cliente="+apellido
+                +"&tipo_cliente="+tipo
+                +"&n_documento_cliente="+documento
+                +"&n_celular_cliente="+celular
+                +"&email_cliente="+email
+                +"&id_usuario_fk="+id_usuario
+                ;
+                */
                 //alert(datos);
-                
-                //var datos = $('#form').serialize();
-                //var datos = $('#form').serialize();
+                var datos = $('#form').serialize();
                 
                 $.ajax({
                     url: ruta,
@@ -390,7 +463,7 @@
                             // Muestra alerta
                             Swal.fire({
                                 type: "success",
-                                title: "Usuario modificado correctamente",
+                                title: "Cliente modificado correctamente",
                                 showConfirmButton: false,
                                 timer: 1500
                             });
@@ -398,7 +471,7 @@
                         } else {
                             Swal.fire({
                                 type: "error",
-                                title: "Usuario no pudo ser modificado",
+                                title: "Cliente no pudo ser modificado",
                                 showConfirmButton: false,
                                 timer: 1500
                             });
@@ -410,20 +483,52 @@
 
                         } else {
 
-                            if(data.responseJSON.errors.nombre_usuario == null){
-                                $('.id-nombre_usuario').removeClass('is-invalid');
-                                $("#mensaje-error-nombre_usuario").html('');
+                            if(data.responseJSON.errors.nombre_cliente == null){
+                                $('.id-nombre_cliente').removeClass('is-invalid');
+                                $("#mensaje-error-nombre_cliente").html('');
                             } else {
-                                $('.id-nombre_usuario').addClass('is-invalid');
-                                $("#mensaje-error-nombre_usuario").html(data.responseJSON.errors.nombre_usuario);
+                                $('.id-nombre_cliente').addClass('is-invalid');
+                                $("#mensaje-error-nombre_cliente").html(data.responseJSON.errors.nombre_cliente);
                             }
                             
-                            if(data.responseJSON.errors.email_usuario == null){
-                                $('.id-email_usuario').removeClass('is-invalid');
-                                $("#mensaje-error-email_usuario").html('');    
+                            if(data.responseJSON.errors.apellido_cliente == null){
+                                $('.id-apellido_cliente').removeClass('is-invalid');
+                                $("#mensaje-error-email").html('');    
                             } else {
-                                $('.id-email_usuario').addClass('is-invalid');
-                                $("#mensaje-error-email_usuario").html(data.responseJSON.errors.email_usuario);
+                                $('.id-apellido_cliente').addClass('is-invalid');
+                                $("#mensaje-error-apellido_cliente").html(data.responseJSON.errors.apellido_cliente);
+                            }
+                            
+                            if(data.responseJSON.errors.tipo_cliente == null){
+                                $('.id-tipo_cliente').removeClass('is-invalid');
+                                $("#mensaje-error-tipo_cliente").html('');    
+                            } else {
+                                $('.id-tipo_cliente').addClass('is-invalid');
+                                $("#mensaje-error-tipo_cliente").html(data.responseJSON.errors.tipo_cliente);
+                            }
+
+                            if(data.responseJSON.errors.n_documento_cliente == null){
+                                $('.id-n_documento_cliente').removeClass('is-invalid');
+                                $("#mensaje-error-n_documento_cliente").html('');    
+                            } else {
+                                $('.id-n_documento_cliente').addClass('is-invalid');
+                                $("#mensaje-error-n_documento_cliente").html(data.responseJSON.errors.n_documento_cliente);
+                            }
+
+                            if(data.responseJSON.errors.n_celular_cliente == null){
+                                $('.id-n_celular_cliente').removeClass('is-invalid');
+                                $("#mensaje-error-n_celular_cliente").html('');    
+                            } else {
+                                $('.id-n_celular_cliente').addClass('is-invalid');
+                                $("#mensaje-error-n_celular_cliente").html(data.responseJSON.errors.n_celular_cliente);
+                            }
+
+                            if(data.responseJSON.errors.email_cliente == null){
+                                $('.id-email_cliente').removeClass('is-invalid');
+                                $("#mensaje-error-email_cliente").html('');    
+                            } else {
+                                $('.id-email_cliente').addClass('is-invalid');
+                                $("#mensaje-error-email_cliente").html(data.responseJSON.errors.email_cliente);
                             }
                             
                         }
@@ -440,7 +545,6 @@
 
     });
 
-
     // ELIMINAR
     var Eliminar = function(id,nom){
 
@@ -456,7 +560,7 @@
         swalWithBootstrapButtons
             .fire(
             {
-                title: "¿Desea eliminar el usuario ' "+ nom + "'?",
+                title: "¿Desea eliminar el cliente ' "+ nom + "'?",
                 //text: "You won't be able to revert this!",
                 type: "warning",
                 showCancelButton: true,
@@ -471,7 +575,7 @@
                     // SE ELIMINA EL REGISTRO
                     
                     var token = $("input[name=_token]").val();
-                    var ruta = "{{url('usuario')}}/"+id+"";
+                    var ruta = "{{url('cliente')}}/"+id+"";
 
                     $.ajax({
                         url: ruta,
@@ -520,99 +624,6 @@
 
     }
 
-    // ACTIVAR / DESACTIVAR
-    var Modulo = function(id,nom){
-
-        var variable;
-
-        if(nom=="Activo"){
-            variable = "0";
-        } else {
-            variable = "1";
-        }
-        
-        var swalWithBootstrapButtons = Swal.mixin(
-        {
-            customClass:
-            {
-                confirmButton: "btn btn-primary",
-                cancelButton: "btn btn-danger mr-2"
-            },
-            buttonsStyling: false
-        });
-
-        swalWithBootstrapButtons
-        .fire(
-        {
-            title: "¿Desea cambiar estado del usuario ' "+ variable + "'?",
-            //text: "You won't be able to revert this!",
-            type: "warning",
-            showCancelButton: true,
-            confirmButtonText: "Sí, deseo cambiar!",
-            cancelButtonText: "No, cancelar!",
-            reverseButtons: true
-        })
-        .then(function(result)
-        {
-            if (result.value){
-                                
-                // TOKEN
-                var token = $("input[name=_token]").val();
-
-                var ruta = "{{url('usuario.cambiar')}}/"+id+"";
-
-                $.ajax({
-                    url: ruta,
-                    headers: {'X-CSRF-TOKEN': token},
-                    type: 'PUT',
-                    datatype: 'json',
-                    success: function(data){
-                        if(data.success == 'true'){
-                            // Recarga lista
-                            setTimeout(function(){$('#dt-basic-example').DataTable().ajax.reload(null, false);}, 1000);
-                            
-                            // Cierra Modal
-                            $('#default-example-modal').modal('hide');
-                            
-                            // Muestra alerta
-
-                            swalWithBootstrapButtons.fire(
-                                "¡Eliminado!",
-                                "",
-                                "success"
-                            );
-                        } else {
-                            swalWithBootstrapButtons.fire(
-                                "Cancelado",
-                                "",
-                                "error"
-                            );
-                        }
-                    },
-                    error: function(data){
-                        swalWithBootstrapButtons.fire(
-                            "No pudo ser cambiado",
-                            "",
-                            "error"
-                        );
-                    }
-                });
-
-            }else if (
-                // Read more about handling dismissals
-                result.dismiss === Swal.DismissReason.cancel
-            )
-            {
-                swalWithBootstrapButtons.fire(
-                    "Cancelado",
-                    "",
-                    "error"
-                );
-            }
-        });
-
-    }
-
     // MANDAR DATOS
     var Mostrar = function(id){
 
@@ -625,36 +636,28 @@
         
         if(id==0){ // hide()->cerrar, show()->abrir
             
-            document.getElementById("tituloModal").innerHTML = "Nuevo Usuario";
+            document.getElementById("tituloModal").innerHTML = "Nuevo Cliente";
             
             $("#Guardar").show();
             $("#Modificar").hide();
 
-            // Muestro
-            $("#contraseña_usuario").show(); 
-            $("#contraseña_usuario_confirmation").show(); 
-            $("#label-contraseña_usuario").show(); 
-            $("#label-contraseña_usuario-confirmation").show(); 
-            
         } else {
             
-            document.getElementById("tituloModal").innerHTML = "Modificar Usuario";
+            document.getElementById("tituloModal").innerHTML = "Modificar Cliente";
             
             $("#Guardar").hide(); 
             $("#Modificar").show();
-            
-            // OCULTO MI CAMPOS DE CONTRASEÑAS 
-            $("#contraseña_usuario").hide(); 
-            $("#contraseña_usuario_confirmation").hide(); 
-            $("#label-contraseña_usuario").hide(); 
-            $("#label-contraseña_usuario-confirmation").hide(); 
 
-            var route = "{{url('usuario')}}/"+id+"/edit";
+            var route = "{{url('cliente')}}/"+id+"/edit";
 
             $.get(route, function(data){
-                $("#id").val(data.id);
-                $("#nombre_usuario").val(data.nombre_usuario);
-                $("#email_usuario").val(data.email_usuario);
+                $("#id_cliente").val(data.id);
+                $("#nombre_cliente").val(data.nombre_cliente);
+                $("#apellido_cliente").val(data.apellido_cliente);
+                $("#tipo_cliente").val(data.tipo_cliente);
+                $("#n_documento_cliente").val(data.n_documento_cliente);
+                $("#n_celular_cliente").val(data.n_celular_cliente);
+                $("#email_cliente").val(data.email_cliente);
             });
 
         }
@@ -676,17 +679,25 @@
 
     // LIMPIO LAS VALIDACIONES
     var limpiarValidaciones = function(){
-        $('.id-nombre_usuario').removeClass('is-invalid');
-        $("#mensaje-error-nombre_usuario").html('');
+
+        $('.id-nombre_cliente').removeClass('is-invalid');
+        $("#mensaje-error-nombre_cliente").html('');
         
-        $('.id-email_usuario').removeClass('is-invalid');
-        $("#mensaje-error-email_usuario").html(''); 
+        $('.id-apellido_cliente').removeClass('is-invalid');
+        $("#mensaje-error-apellido_cliente").html(''); 
 
-        $('.id-contraseña_usuario').removeClass('is-invalid');
-        $("#mensaje-error-contraseña_usuario").html(''); 
+        $('.id-tipo_cliente').removeClass('is-invalid');
+        $("#mensaje-error-tipo_cliente").html(''); 
 
-        $('.id-contraseña_usuario-2').removeClass('is-invalid');
-        $("#mensaje-error-contraseña_usuario-2").html(''); 
+        $('.id-n_documento_cliente').removeClass('is-invalid');
+        $("#mensaje-error-n_documento_cliente").html(''); 
+        
+        $('.id-n_celular_cliente').removeClass('is-invalid');
+        $("#mensaje-error-n_celular_cliente").html(''); 
+
+        $('.id-email_cliente ').removeClass('is-invalid');
+        $("#mensaje-error-email_cliente").html(''); 
+
     }
 
     </script>
