@@ -55,5 +55,16 @@ Route::group(['middleware' => ['web']], function () {
     route::resource('tipo', 'Tipo\TipoController');
 
 
+    //? ===========OTROS============
+
+    // TODO: RESERVA
+        
+    route::get('reserva/listar','Reserva\ReservaController@listarReservas')->name('reserva.listar');
+    route::resource('reserva', 'Reserva\ReservaController');
+
+    // TODO: HABITACION
+        
+    route::get('habitacion/listar','Habitacion\HabitacionController@listarHabitaciones')->name('habitacion.listar');
+    route::resource('habitacion', 'Habitacion\HabitacionController');
 
 });

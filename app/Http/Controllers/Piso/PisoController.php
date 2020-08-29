@@ -83,11 +83,11 @@ class PisoController extends Controller{
         
         if($request->ajax()){
 
-            $clientes = PisoModel::select('tb_piso.id',
+            $pisos = PisoModel::select('tb_piso.id',
             'tb_piso.nombre_piso',
             'tb_piso.id_usuario_fk');
     
-            return datatables($clientes)
+            return datatables($pisos)
             ->addColumn('action','piso.actions')
             ->make(true);
     

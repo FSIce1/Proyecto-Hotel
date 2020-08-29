@@ -220,7 +220,33 @@
 
                         </li>
 
+                        <li>
 
+                            <a href="#" title="Listado" data-filter-tags="lista">
+                                <i class="fal fa-table"></i>
+                                <span class="nav-link-text" data-i18n="nav.datatables">Otros</span>
+                            </a>
+
+                            <ul>
+                                
+                                <li class="{{ request()->routeIs('habitacion.listar') ? 'active' : ''}}">
+                                    <a href=" {{ url('habitacion/listar') }}" title="Ver lista de habitaciones"
+                                        data-filter-tags="lista de habitaciones">
+                                        <span class="nav-link-text" data-i18n="nav.datatables_export">Habitación</span>
+                                    </a>
+                                </li>
+
+                                
+                                <li class="{{ request()->routeIs('reserva.listar') ? 'active' : ''}}">
+                                    <a href=" {{ url('reserva/listar') }}" title="Ver lista de tipos"
+                                        data-filter-tags="lista de reservas">
+                                        <span class="nav-link-text" data-i18n="nav.datatables_export">Reserva</span>
+                                    </a>
+                                </li>
+
+                            </ul>
+
+                        </li>
 
                     </ul>
                     <div class="filter-message js-filter-message bg-success-600"></div>

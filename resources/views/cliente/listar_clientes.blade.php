@@ -432,7 +432,6 @@
 
                 var ruta = "{{url('cliente')}}/"+id+"";
 
-                /*
                 var datos = "id="+id
                 +"&nombre_cliente="+nombre
                 +"&apellido_cliente="+apellido
@@ -442,9 +441,9 @@
                 +"&email_cliente="+email
                 +"&id_usuario_fk="+id_usuario
                 ;
-                */
+                
                 //alert(datos);
-                var datos = $('#form').serialize();
+                //var datos = $('#form').serialize();
                 
                 $.ajax({
                     url: ruta,
@@ -651,7 +650,7 @@
             var route = "{{url('cliente')}}/"+id+"/edit";
 
             $.get(route, function(data){
-                $("#id_cliente").val(data.id);
+                $("#id").val(data.id);
                 $("#nombre_cliente").val(data.nombre_cliente);
                 $("#apellido_cliente").val(data.apellido_cliente);
                 $("#tipo_cliente").val(data.tipo_cliente);

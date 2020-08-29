@@ -3,9 +3,9 @@
 
 @section('modo', 'Listado')
 
-@section('titulo', 'Piso')
+@section('titulo', 'Habitación')
 
-@section('titulo-ref', 'Lista de Pisos')
+@section('titulo-ref', 'Lista de Habitaciones')
 
 @section('texto','busca, elimina, modifica, exporta en las siguiente lista')
 
@@ -19,7 +19,7 @@
 
                 <div class="modal-header">
                     <h4 id="tituloModal" name="tituloModal" class="modal-title">
-                        Agregar Piso
+                        Agregar Habitación
                     </h4>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true"><i class="fal fa-times"></i></span>
@@ -32,15 +32,41 @@
                     {!! Form::hidden('id', null, ['id' => 'id']) !!}
                     
                     <div class="form-group">
-                        
-                        {!! Form::label('nombre_piso', 'Usuario', ['class'=>'form-label']) !!}
+                        {!! Form::label('codigo_habitacion', 'Código', ['class'=>'form-label']) !!}
 
-                        {!! Form::text('nombre_piso', null, ['id' => 'nombre_piso', 'class' => 'form-control id-nombre_piso',
-                        'placeholder' => 'Ingrese Piso...']) !!}
+                        {!! Form::text('codigo_habitacion', null, ['id' => 'codigo_habitacion', 'class' => 'form-control id-codigo_habitacion',
+                        'placeholder' => 'Ingrese Código...']) !!}
     
-                        <div id='mensaje-error-nombre_piso' class="invalid-feedback">
+                        <div id='mensaje-error-codigo_habitacion' class="invalid-feedback">
                         </div>
+                    </div>
 
+                    <div class="form-group">
+                        {!! Form::label('id_piso_fk', 'Piso', ['class'=>'form-label']) !!}
+
+                        {!! Form::select('id_piso_fk', $pisos, null, ['id' => 'id_piso_fk', 'class' => 'form-control id-id_piso_fk']) !!}
+
+                        <div id='mensaje-error-id_piso_fk' class="invalid-feedback">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        {!! Form::label('id_tipo_fk', 'Tipo', ['class'=>'form-label']) !!}
+
+                        {!! Form::select('id_tipo_fk', $tipos, null, ['id' => 'id_tipo_fk', 'class' => 'form-control id-id_tipo_fk']) !!}
+
+                        <div id='mensaje-error-id_tipo_fk' class="invalid-feedback">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        {!! Form::label('descripcion_habitacion', 'Descripción', ['class'=>'form-label']) !!}
+
+                        {!! Form::text('descripcion_habitacion', null, ['id' => 'descripcion_habitacion', 'class' => 'form-control id-descripcion_habitacion',
+                        'placeholder' => 'Ingrese Descripción...']) !!}
+    
+                        <div id='mensaje-error-descripcion_habitacion' class="invalid-feedback">
+                        </div>
                     </div>
 
                     {!! Form::text('id_usuario_fk', '1', ['id' => 'id_usuario_fk']) !!}
